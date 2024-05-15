@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F TO C</title>
+  </head>
+  <body>
+    <main>
+        <div>
+            <h1>Lämpötilamuunnin</h1>
+        </div>
+        <div>
+            <form id="formi" onsubmit="formData(event)" method="POST">
+                <label>Anna luku</label>
+                <input type="text" id="annettu_luku" name="annettu_luku">
+                <br><br>
+                <label>Mistä muunnetaan?</label>
+                <select id="mista" name="mista">
+                    <option value="celcius">Celcius</option>
+                    <option value="fahrenheit">Fahrenheit</option>
+                    <option value="kelvin">Kelvin</option>
+                </select>
+                <br><br>
+                <label>Mihin muunnetaan?</label>
+                <select id="mihin" name="mihin">
+                    <option value="celcius">Celcius</option>
+                    <option value="fahrenheit">Fahrenheit</option>
+                    <option value="kelvin">Kelvin</option>
+                </select>
+                <br><br>
+                <input type="submit" value="Käännä">
+            </form>
+        </div>
+        <div>
+            {% with luvut = get_flashed_messages(with_categories=true) %}
+                {% if luvut %}
+                    <ul>
+                        {% for i, p in luvut %}
+                            <li>{{ p }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+    </main>
+	<script src="{{ url_for('static', filename='index.js') }}"></script>
+
+    </script>
+  </body>
+</html>
